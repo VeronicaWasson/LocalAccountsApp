@@ -25,6 +25,9 @@ namespace LocalAccountsApp
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // Enforce HTTPS
+            config.Filters.Add(new LocalAccountsApp.Filters.RequireHttpsAttribute());
         }
     }
 }
