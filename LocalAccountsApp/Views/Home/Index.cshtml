@@ -1,24 +1,61 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+﻿@section Scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
+  <div class="col-sm-4">
+    <form data-bind="submit: callApi">
+      <h3>Invoke API</h3>
+      <div class="form-group">
+        <label>User</label>
+        <input class="form-control" type="text" readonly data-bind="value: user" />
+      </div>
+      <div class="form-group">
+        <label>Result</label>
+        <input class="form-control" type="text" readonly data-bind="value: result" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-default">Call API</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-sm-4">
+    <form data-bind="submit: register">
+      <h3>Register</h3>
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="text" data-bind="value: registerEmail"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" data-bind="value: registerPassword"/>
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input class="form-control" type="password" data-bind="value: registerPassword2" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-default">Register</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-sm-4">
+    <h3>Log In</h3>
+    <form data-bind="submit: login">
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="text" data-bind="value: loginEmail"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" data-bind="value: loginPassword"/>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-default">Log In</button>
+        <button data-bind="click: logout" class="btn btn-default">Log Out</button>
+      </div>
+    </form>
+  </div>
 </div>
