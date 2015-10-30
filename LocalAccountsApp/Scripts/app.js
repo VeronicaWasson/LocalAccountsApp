@@ -75,8 +75,22 @@
     }
 
     self.logout = function () {
-        self.user('');
-        sessionStorage.removeItem(tokenKey)
+        // Log out from the cookie based logon.
+        var token = sessionStorage.getItem(tokenKey);
+        var headers = {};
+        if (token) {
+            headers.Authorization = 'Bearer ' + token;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/Account/Logout',
+            headers: headers
+        }).done(function (data) {
+            // Successfully logged out. Delete the token.
+            self.user('');
+            sessionStorage.removeItem(tokenKey);
+        }).fail(showError);
     }
 }
 
