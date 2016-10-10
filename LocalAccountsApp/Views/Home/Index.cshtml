@@ -17,6 +17,9 @@
       <div class="form-group">
         <button type="submit" class="btn btn-default">Call API</button>
       </div>
+      <div class="form-group error-messages" data-bind="foreach: errors">
+         <p data-bind="text: $data" />
+      </div>
     </form>
   </div>
 
